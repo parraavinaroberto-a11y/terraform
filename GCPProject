@@ -1,0 +1,10 @@
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+resource "google_project" "project" {
+  name       = "demo-project"
+  project_id = "demo-project-12345"
+  org_id     = var.org_id
+}
