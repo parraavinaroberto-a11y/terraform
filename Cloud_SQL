@@ -1,0 +1,14 @@
+resource "google_sql_database_instance" "postgres" {
+  name             = "demo-postgres"
+  database_version = "POSTGRES_14"
+  region           = var.region
+
+  settings {
+    tier = "db-custom-2-4096"
+  }
+}
+
+resource "google_sql_database" "app_db" {
+  name     = "appdb"
+  instance = google_sql_database_instance.postgres.name
+}
